@@ -7,7 +7,7 @@ $(function(){
         $('.send-section input').val('');
         return false;
     });
-    socket.on('newMessage', function(data) {                $('.msgs').append($('<li>').text(data.from+': '+data.message).addClass('message'));
+    socket.on('newMessage', function(data) {                $('.msgs').append($('<li>').text(data.from+': '+data.text).addClass('message'));
 //        var group = io('/' + groupy);
 //    group.on(group + '_msg',function(msg){
 //        // make a chat section to group 1
