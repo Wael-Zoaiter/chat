@@ -1,9 +1,9 @@
 $(function(){
     var socket = io();
-//        var groupy = $('.active').prop('id');
+    var groupy = $('.active').prop('id');
     
     $('form').submit(function(){
-        socket.emit('createMessage','group', $('.send-section input').val());
+        socket.emit('createMessage',groupy, $('.send-section input').val());
         $('.send-section input').val('');
         return false;
     });

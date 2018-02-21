@@ -3,5 +3,6 @@ $(function(){
         $('.groups-list').children('li').removeClass('active');
         $(this).addClass('active');
         $('.nofic').fadeOut(500);
+        var groupy = $('.active').prop('id');
     });
 });
