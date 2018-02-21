@@ -9,6 +9,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 var routes = require('./routes/index');
+var {generateMessage} = require('./utils/message.js');
 
 // view engine setup
 //app.set('public', path.join(__dirname, 'public'));
@@ -62,10 +63,7 @@ io.on('connection',function(socket) {
     console.log('User Connected');
     socket.on('createMessage',function(sender,msg) {
         console.log(sender + ': ' + msg);
-        io.emit('newMessage',{
-            from: sender,
-            message: msg
-        });
+        io.emit('newMessage', generateMessage(sender,msg));
     });
 });
 
