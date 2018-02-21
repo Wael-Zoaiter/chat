@@ -1,0 +1,240 @@
+/* Fonts */
+
+@font-face {
+    font-family: Raleway;
+    src: url(../fonts/Raleway-Regular.ttf)
+}
+@font-face {
+    font-family: RalewayBold;
+    src: url(../fonts/Raleway-Bold.ttf)
+}
+@font-face {
+    font-family: RalewayLight;
+    src: url(../fonts/Raleway-Light.ttf)
+}
+@font-face {
+    font-family: RalewayExtraLight;
+    src: url(../fonts/Raleway-ExtraLight.ttf)
+}
+@font-face {
+    font-family: RalewayMedium;
+    src: url(../fonts/Raleway-Medium.ttf)
+}
+
+/* Body */
+
+body
+{
+    font-family: Raleway;
+}
+
+/* Aside Bar */
+
+.logo h1 
+{
+/*    transform: rotate(90deg)*/
+}
+
+.aside-bar 
+{
+    width: 7%;
+    height: 100vh;
+    float: left;
+    color: #7e75ad;
+    font-size: 25px;
+    padding: 0;
+    text-align: center;
+    position: fixed;
+    overflow: hidden
+}
+.aside-bar .logo 
+{
+    font-family: RalewayLight;
+    padding:  20px 0;
+    height: 17vh;
+    background: linear-gradient(#3d466f,#30375a);
+}
+.aside-bar .active,
+.aside-bar li span:hover 
+{
+    color: #1cc1fb;
+    cursor: pointer;
+    transition: .5s all ease-in-out
+}
+.aside-list 
+{
+    width: 100%;
+    height: 83vh;
+    overflow: hidden;
+    background: linear-gradient(#3d466f,#3d466f);
+
+}
+.aside-bar ul 
+{
+    list-style: none;
+/*    height: 100%;*/
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.aside-bar ul li 
+{
+    text-align: center;
+    margin: 50px auto;
+    font-size: 22px
+}
+
+/* Body Information */
+
+.body-info 
+{
+    background-color: #1cc1fb;
+    float: left;
+    margin-left: 7%;
+    width: 20%;
+    text-align: center;
+    overflow: hidden;
+    color: #bfeeff;
+    position: fixed
+}
+
+.body-info .upper-body 
+{
+    height: 35vh;
+    background: linear-gradient(#1cc1fb,#19a6fd);
+}
+
+.personal-image 
+{
+    width: 100px;
+    margin: 30px 0 0px;
+}
+
+.upper-body h3
+{
+    font-family: RalewayLight;
+    margin: 10px 0 0;
+}
+
+.upper-body p 
+{
+    font-family: Raleway;
+}
+
+.lower-body 
+{
+    height: 65vh;
+    margin: 0;
+    padding: 0
+}
+
+.info-1 h4
+{
+    font-family: RalewayMedium;
+    margin: -25px 0 7px
+}
+
+.info-1.col-lg-6
+{
+    padding: 0
+}
+
+.groups-list li {
+    width: 100%;
+    font-family: RalewayMedium;
+    padding: 50px 0;
+    font-size: 15px;
+    margin: 0;
+    border: .5px solid #55d2ff;
+    cursor: pointer;
+    position: relative
+}
+
+.groups-list li.active,
+.groups-list li:hover
+{
+    background-color: #bfeeff;
+    color: #1cc1fb;
+    transition: .5s all ease
+}
+
+.nofic {
+    background-color: #55d2ff;
+    border: 2px solid #bfeeff;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+/*    top: -8px; right: -8px;*/
+    color: #bfeeff;
+    font-family: RalewayMedium;
+    font-size: 20px;
+    line-height: 25px;
+    z-index: 999;
+    display: none
+}
+
+.groups-list li:first-child
+{
+    border-top: none;
+}
+
+/* Chat Body */
+
+.chat-body 
+{
+    margin-left: 27%;
+    width: 73%;
+    float: right;
+    overflow: hidden;
+    height: 100vh;
+    position: relative;
+    background-color: azure
+}
+
+.message-area 
+{
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    top: 0;right: 0;
+    overflow: hidden;
+    padding: 20px
+}
+
+.message 
+{
+    font-family: Raleway;
+    font-size: 18px;
+    padding: 10px 0
+}
+
+.send-section
+{
+    position: absolute;
+    bottom: 0;right: 0;
+    height: 10%;
+    width: 100%
+}
+
+.send-section input 
+{
+    width: 90%;
+    float: left;
+    display: inline;
+    height: 100%;
+    padding: 10px;
+    font-size: 15px
+}
+
+.send-section button 
+{
+    float: right;
+    display: inline;
+    width: 10%;
+    height: 100%;
+    background-color: #1cc1fb;
+    color: #bfeeff;
+    font-family: RalewayMedium;
+    font-size: 20px
+}

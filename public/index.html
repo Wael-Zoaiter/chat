@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<haed>
+    <meta charset="utf-8"/>
+    <title>WAEL</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css"/>
+</haed>
+<body>
+<!--  Aside Bar  -->
+    <aside class="aside-bar">
+        <div class="logo">
+            <h1>WA</h1>
+        </div>
+        <div class="aside-list">
+        <ul class="aside-elements list-unstyled">
+            <li><a src="#"><span class="far fa-user"></span></a></li>
+            <li><a src="#"><span class="far fa-comments"></span></a></li>
+            <li><a src="#"><span class="fab fa-slack-hash"></span></a></li>
+            <li><a src="#"><span class="fa fa-shopping-cart"></span></a></li>
+            <li><a src="#"><span class="fas fa-paint-brush"></span></a></li>
+        </ul>
+        </div>
+    </aside>
+    
+<!--  Body Information  -->
+    <section class="body-info">
+        <div class="upper-body">
+            <img class="personal-image img-circle" src="img/wael.JPG">
+            <h3 class="personal-name">Wael Zoaiter</h3>
+            <p class="personal-job">Web Developer</p>
+        </div>
+        <div class="lower-body">
+            <div class="info-1 col-lg-6">
+                <h4>Friends</h4>
+                <ul class="groups-list list-unstyled">
+                    <li id="person_1" class="active">
+                    Yasser<br>
+                    <span class="nofic">1</span>
+                    </li>
+                    <li id="person_2">
+                    Ramadan<br>
+                    <span class="nofic">1</span>
+                    </li>
+                    <li id="person_3">
+                    Mahmoud<br>
+                    <span class="nofic">1</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="info-1 col-lg-6">
+                <h4>Groups</h4>
+                <ul class="groups-list list-unstyled">
+                    <li id="group_1">
+                    Web Camp<br>
+                    <span class="nofic">1</span>
+                    </li>
+                    <li id="group_2">
+                    YRWM<br>
+                    <span class="nofic">1</span>
+                    </li>
+                    <li id="group_3">
+                    Basketball<br>
+                    <span class="nofic">1</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+<!--  Chat Section  -->
+    <section class="chat-body col-lg-12">
+        <div class="message-area">
+            <ul class="msgs list-unstyled">
+                <li class="message">Hello</li>
+                <li class="message">Hi</li>
+            </ul>
+        </div>
+        
+        <form class="send-section">
+            <input type='text' placeholder='Youe message'>
+            <button class='btn' type='submit'>Send</button>
+        </form>
+    </section>
+    
+<!--  Scripts  -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script/jquery-3.1.1.min.js"></script>
+    <script src="script/bootstrap.min.js"></script>
+    <script src="script/script.js"></script>
+    <script src="script/mysocket.js">
+</script>
+<!--
+<script>
+    $(function(){
+    var socket = io();
+    $('form').submit(function(){
+        socket.emit('message','wael', $('.send-section input').val());
+        $('.send-section input').val('');
+        return false;
+    });
+    socket.on('res msg', function(data) {                $('.msgs').append($('<li>').text(data.from+': '+data.message).addClass('message'));
+    });
+    
+    $('groups-list li').on('click',function(){
+         alert($('.active').prop('id'));
+    });
+    var group_1 = io('/group_1');
+    group_1.on('group_1_msg',function(msg){
+        // make a nofication in group 1
+        // make a chat section to group 1
+        $('.group_1').next('.nofic').fadeIn(500);
+        console.log('group_1:' + msg);
+    });
+});
+    </script>
+-->
+</body>
+</html>
