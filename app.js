@@ -22,9 +22,9 @@ app.use('/', routes);
 // Socket.io Section
 io.on('connection',function(socket) {
     console.log('User Connected');
-    socket.on('message',function(sender,msg) {
+    socket.on('createMessage',function(sender,msg) {
         console.log(sender + ': ' + msg);
-        io.emit('res msg',{
+        io.emit('newMessage',{
             from: sender,
             message: msg
         });
