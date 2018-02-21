@@ -1,0 +1,8 @@
+{
+    "name": "waelzoaiter",
+    "description": "",
+    "repository": "https://github.com/Wael-Zoaiter/chat.git",
+    "logo": "",
+    "keywords": ["node","express","static"],
+    "image": "heroku/nodejs"
+}
