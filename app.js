@@ -10,6 +10,10 @@ var io = require('socket.io')(http);
 
 var routes = require('./routes/index');
 
+// view engine setup
+//app.set('public', path.join(__dirname, 'public'));
+//app.set('view engine', 'html');
+
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -19,24 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 
-// Socket.io Section
-io.on('connection',function(socket) {
-    console.log('User Connected');
-    socket.on('createMessage',function(sender,msg) {
-        console.log(sender + ': ' + msg);
-        io.emit('newMessage',{
-            from: sender,
-            message: msg
-        });
-    });
-});
 
-var group_1 = io.of('/group_1');
-group_1.on('connection',function(socket) {
-    socket.emit('group_1_msg',{
-        sendto: '/group_1'
-    });
-});
 
 
 /// catch 404 and forwarding to error handler
@@ -70,10 +57,29 @@ app.use(function(err, req, res, next) {
     });
 });
 
+// Socket.io Section
+io.on('connection',function(socket) {
+    console.log('User Connected');
+    socket.on('createMessage',function(sender,msg) {
+        console.log(sender + ': ' + msg);
+        io.emit('newMessage',{
+            from: sender,
+            message: msg
+        });
+    });
+});
+
+//var group_1 = io.of('/group_1');
+//group_1.on('connection',function(socket) {
+//    socket.emit('group_1_msg',{
+//        sendto: '/group_1'
+//    });
+//});
+
 // Listen to Server
-var port = process.env.PORT || 3000;
-http.listen(port,function() {
-	console.log('listening on port '+port);
+//var port = process.env.PORT || 3000;
+http.listen(3000,function() {
+	console.log('listening on port '+3000);
 });
 
 module.exports = app;
