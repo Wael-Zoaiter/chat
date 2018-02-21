@@ -77,9 +77,9 @@ io.on('connection',function(socket) {
 //});
 
 // Listen to Server
-//var port = process.env.PORT || 3000;
-http.listen(3000,function() {
-	console.log('listening on port '+3000);
+var port = process.env.PORT || 3000;
+http.listen(port,function() {
+	console.log('listening on port '+port);
 });
 
 module.exports = app;
