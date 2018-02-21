@@ -9,9 +9,6 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 var routes = require('./routes/index');
-var users = require('./routes/user');
-
-
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -21,13 +18,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-//app.use('/users', users);
-
 
 // Socket.io Section
-io.on('connection',function(socket){
+io.on('connection',(socket) => {
     console.log('User Connected');
-    socket.on('message',function(sender,msg){
+    socket.on('message',(sender,msg) => {
         console.log(sender + ': ' + msg);
         io.emit('res msg',{
             from: sender,
@@ -37,7 +32,7 @@ io.on('connection',function(socket){
 });
 
 var group_1 = io.of('/group_1');
-group_1.on('connection',function(socket){
+group_1.on('connection',(socket) => {
     socket.emit('group_1_msg',{
         sendto: '/group_1'
     });
@@ -45,7 +40,7 @@ group_1.on('connection',function(socket){
 
 
 /// catch 404 and forwarding to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
@@ -56,7 +51,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
+    app.use((err, req, res, next) => {
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -67,7 +62,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
@@ -76,8 +71,9 @@ app.use(function(err, req, res, next) {
 });
 
 // Listen to Server
-http.listen(3000,function(){
-	console.log('listening on port 3000');
+var port = process.env.PORT || 3000;
+http.listen(port,() => {
+	console.log('listening on port '+port);
 });
 
 module.exports = app;
