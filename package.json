@@ -10,7 +10,11 @@
     "engines": {
         "node": "8.9.4"
     },
-  "keywords": [],
+  "keywords": [
+      "node",
+      "heroku",
+      "express"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -22,5 +26,9 @@
     "cookie-parser": "~1.0.1",
     "body-parser": "~1.0.0",
     "debug": "~0.7.4"
-  }
+  },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Wael-Zoaiter/chat.git"
+    }
 }
