@@ -20,8 +20,11 @@ $(function(){
 //        console.log(group + ': ' + msg);
 //    });
     });
+    socket.on('newLocationMessage',function(data){
+        $('.msgs').append($('<a target="_blank">').attr('href',data.url).text('My Location').addClass('message'));
+    });
     
-    var locationButton = $('#send-location');
+    var locationButton = $('.send-location');
     locationButton.on('click', function(){
         if(!navigator.geolocation) {
             return alert('Geolocation not supported by yout browser.');

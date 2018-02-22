@@ -9,7 +9,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 var routes = require('./routes/index');
-var {generateMessage} = require('./utils/message.js');
+var {generateMessage, generateLocationMessage} = require('./utils/message.js');
 
 // view engine setup
 //app.set('public', path.join(__dirname, 'public'));
@@ -67,7 +67,7 @@ io.on('connection',function(socket) {
         callback(sender);
     });
     socket.on('createLocationMessage', function(coords){
-    io.emit('newMessage', generateMessage('Admin', coords.latitude + ', ' + coords.longitude));
+    io.emit('newLocationMessage', generateLocationMessage('Admin', coords.latitude, coords.longitude));
 });
 });
 

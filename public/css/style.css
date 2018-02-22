@@ -227,9 +227,10 @@ body
     font-size: 15px
 }
 
-.send-section button 
+.send-section button,
+.send-location
 {
-    float: right;
+/*    float: right;*/
     display: inline;
     width: 10%;
     height: 100%;
@@ -241,7 +242,11 @@ body
     border-radius: 0
 }
 
-#send-location {
+.send-location {
     font-size: 15px;
-    border-right: 1px solid #666
+    border-left: 1px solid #bfeeff;
+    float: right;
+    height: 10%;
+    position: absolute;
+    bottom: 0;right: 0;
 }
