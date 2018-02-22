@@ -1,11 +1,12 @@
 $(function(){
     var socket = io();
     var sendSec = $('.send-section input');
-    var groupy = $('.active').prop('id');
+//    var groupy = $('.active').prop('id');
+    var user = prompt('Enter Your name:');
     
     $('form').on('submit', function(e){
         e.preventDefault();
-        socket.emit('createMessage',groupy, sendSec.val(), function(data){
+        socket.emit('createMessage',user, sendSec.val(), function(data){
             console.log('The message from you ' + data + ' successfully received.');
         });
         sendSec.val('');
@@ -30,11 +31,14 @@ $(function(){
             return alert('Geolocation not supported by yout browser.');
         }
         
+        locationButton.attr('disabled','disabled').text('...');
         navigator.geolocation.getCurrentPosition(function (position){
+            locationButton.removeAttr('disabled').text('Send Location');
             socket.emit('createLocationMessage', {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
             }, function(){
+                
                 alert('Unable to fetch location.');
             });
         })
