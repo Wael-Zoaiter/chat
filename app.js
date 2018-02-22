@@ -61,10 +61,14 @@ app.use(function(err, req, res, next) {
 // Socket.io Section
 io.on('connection',function(socket) {
     console.log('User Connected');
-    socket.on('createMessage',function(sender,msg) {
+    socket.on('createMessage',function(sender, msg, callback) {
         console.log(sender + ': ' + msg);
         io.emit('newMessage', generateMessage(sender,msg));
+        callback(sender);
     });
+    socket.on('createLocationMessage', function(coords){
+    io.emit('newMessage', generateMessage('Admin', coords.latitude + ', ' + coords.longitude));
+});
 });
 
 //var group_1 = io.of('/group_1');
