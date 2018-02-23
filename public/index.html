@@ -72,23 +72,45 @@
     
 <!--  Chat Section  -->
     <section class="chat-body col-lg-12">
-        <div class="message-area">
             <ul class="msgs list-unstyled">
-                <li class="message">Hello</li>
-                <li class="message">Hi</li>
             </ul>
-        </div>
         
         <form class="send-section">
-            <input type='text' placeholder='Youe message'>
+            <input type='text' placeholder='Youe message' autofocus>
             <button class='btn' type='submit'>Send</button>
         </form>
         <button class='send-location'>Send Location</button>
     </section>
     
+<!--  Mustach Templates  -->
+    <script id="message-template" type="text/template">
+        <li>
+            <div class="message-title">
+                <h4>{{from}}</h4>
+                <small>{{createdAt}}</small>
+            </div>
+            <div class="message-body">
+                <p class="message">{{text}}</p>
+            </div>
+        </li>
+    </script>
+    <script id="location-template" type="text/template">
+        <li>
+            <div class="message-title">
+                <h4>{{from}}</h4>
+                <small>{{createdAt}}</small>
+            </div>
+            <div class="message-body">
+                <a target="_blank" href="{{url}}" class="message">Location</a>
+            </div>
+        </li>
+    </script>
+    
 <!--  Scripts  -->
     <script src="script/jquery-3.1.1.min.js"></script>
     <script src="script/bootstrap.min.js"></script>
+    <script src="script/moment.min.js"></script>
+    <script src="script/mustache.js"></script>
     <script src="script/script.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="script/socket.js"></script>

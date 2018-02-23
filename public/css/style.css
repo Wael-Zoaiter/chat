@@ -192,21 +192,21 @@ body
     background-color: azure
 }
 
-.message-area 
+.msgs 
 {
     width: 100%;
     height: 90%;
     position: absolute;
     top: 0;right: 0;
-    overflow: hidden;
-    padding: 20px
+    overflow-y: scroll;
+    padding: 10px
 }
 
 .message 
 {
-    font-family: Raleway;
-    font-size: 18px;
-    padding: 10px 0
+    font-family: monospace;
+    font-size: 14px;
+    padding: 0
 }
 
 .send-section
@@ -230,7 +230,6 @@ body
 .send-section button,
 .send-location
 {
-/*    float: right;*/
     display: inline;
     width: 10%;
     height: 100%;
@@ -242,11 +241,27 @@ body
     border-radius: 0
 }
 
-.send-location {
+.send-location 
+{
     font-size: 15px;
     border-left: 1px solid #bfeeff;
     float: right;
     height: 10%;
     position: absolute;
     bottom: 0;right: 0;
+}
+
+/* Mustache Template */
+
+.message-title h4
+{
+    display: inline-block;
+    padding: 0;
+    margin: 0
+}
+
+.message-title small
+{
+    display: inline-block;
+    color: #999
 }

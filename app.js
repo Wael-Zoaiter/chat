@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var date = require('moment')();
 
 var routes = require('./routes/index');
 var {generateMessage, generateLocationMessage} = require('./utils/message.js');
@@ -60,23 +61,19 @@ app.use(function(err, req, res, next) {
 
 // Socket.io Section
 io.on('connection',function(socket) {
-    console.log('User Connected');
+    var theDate = date.format('h:mm a');
+    console.log('User Connected at ' + theDate);
     socket.on('createMessage',function(sender, msg, callback) {
-        console.log(sender + ': ' + msg);
-        io.emit('newMessage', generateMessage(sender,msg));
-        callback(sender);
+        if (msg != ''){
+            console.log(sender + ': ' + msg);
+            io.emit('newMessage', generateMessage(sender,msg));
+            callback(sender);
+        }
     });
     socket.on('createLocationMessage', function(coords){
     io.emit('newLocationMessage', generateLocationMessage('Admin', coords.latitude, coords.longitude));
 });
 });
-
-//var group_1 = io.of('/group_1');
-//group_1.on('connection',function(socket) {
-//    socket.emit('group_1_msg',{
-//        sendto: '/group_1'
-//    });
-//});
 
 // Listen to Server
 var port = process.env.PORT || 3000;
