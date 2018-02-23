@@ -1,5 +1,6 @@
 /* Fonts */
 
+/*
 @font-face {
     font-family: Raleway;
     src: url(../fonts/Raleway-Regular.ttf)
@@ -20,6 +21,7 @@
     font-family: RalewayMedium;
     src: url(../fonts/Raleway-Medium.ttf)
 }
+*/
 
 /* Body */
 
@@ -49,10 +51,14 @@ body
 }
 .aside-bar .logo 
 {
-    font-family: RalewayLight;
+    font-family: Raleway;
     padding:  20px 0;
     height: 17vh;
     background: linear-gradient(#3d466f,#30375a);
+}
+.aside-bar .logo h1 
+{
+    font-weight: 300 !important;
 }
 .aside-bar .active,
 .aside-bar li span:hover 
@@ -72,7 +78,6 @@ body
 .aside-bar ul 
 {
     list-style: none;
-/*    height: 100%;*/
     overflow: hidden;
     margin: 0 auto;
 }
@@ -112,7 +117,8 @@ body
 
 .upper-body h3
 {
-    font-family: RalewayLight;
+    font-family: Raleway;
+    font-weight: 300;
     margin: 10px 0 0;
 }
 
@@ -130,7 +136,8 @@ body
 
 .info-1 h4
 {
-    font-family: RalewayMedium;
+    font-family: Raleway;
+    font-weight: 500;
     margin: -25px 0 7px
 }
 
@@ -141,7 +148,8 @@ body
 
 .groups-list li {
     width: 100%;
-    font-family: RalewayMedium;
+    font-family: Raleway;
+    font-weight: 500;
     padding: 50px 0;
     font-size: 15px;
     margin: 0;
@@ -165,9 +173,9 @@ body
     width: 30px;
     height: 30px;
     position: absolute;
-/*    top: -8px; right: -8px;*/
     color: #bfeeff;
-    font-family: RalewayMedium;
+    font-family: Raleway;
+    font-weight: 500;
     font-size: 20px;
     line-height: 25px;
     z-index: 999;
@@ -235,7 +243,8 @@ body
     height: 100%;
     background-color: #1cc1fb;
     color: #bfeeff;
-    font-family: RalewayMedium;
+    font-family: Raleway;
+    font-weight: 500;
     font-size: 20px;
     border: none;
     border-radius: 0
