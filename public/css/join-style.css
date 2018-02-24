@@ -1,0 +1,75 @@
+.bg 
+{
+    height: 100vh;
+    background: linear-gradient(#3d466f,#30375a);
+    padding: 25vh 0
+}
+
+.center-box
+{
+    width: 25%;
+    height: 45%;
+    margin: 0 auto;
+    text-align: center;
+    color: #7e75ad;
+    font-family: Raleway;
+    background: linear-gradient(#eee,#ccc);
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 10px 10px rgba(0, 0, 0, 0.2);
+    transition: 1s all ease-in-out
+}
+
+.center-box h3 
+{
+    text-transform: uppercase;
+    font-size: 25px;
+    font-family: Raleway;
+    font-weight: 600
+}
+
+.form-field {
+    margin: 10px 0;
+    font-family: Raleway;
+    font-weight: 500;
+}
+
+.form-field label
+{
+    margin: 5px 0;
+    display: block;
+    text-align: left
+}
+
+.form-field input
+{
+    padding: 10px;
+    font-size: 15px;
+    color: #1cc1fb;
+    font-family: Raleway;
+    font-weight: 500;
+    border-radius: 5px;
+    border: none;
+    width: 90%
+}
+
+.form-field button
+{
+    padding: 10px 40px;
+    font-size: 18px;
+    font-family: Raleway;
+    font-weight: 500;
+    color: #eee;
+    background: linear-gradient(#3d466f,#30375a);
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 1s all ease-in-out
+}
+
+.form-field button:hover 
+{
+    background: linear-gradient(#1cc1fb,#16a2d3);
+}

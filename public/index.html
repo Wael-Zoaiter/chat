@@ -1,119 +1,29 @@
 <!DOCTYPE html>
 <html>
-<haed>
-    <meta charset="utf-8"/>
-    <title>WAEL</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+<head>
+    <meta charset="utf-8">
+    <title>Join Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link href="https://fonts.googleapis.com/css?family=Raleway:100i,200,300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css"/>
-</haed>
-<body>
-<!--  Aside Bar  -->
-    <aside class="aside-bar">
-        <div class="logo">
-            <h1>WA</h1>
-        </div>
-        <div class="aside-list">
-        <ul class="aside-elements list-unstyled">
-            <li><a src="#"><span class="far fa-user"></span></a></li>
-            <li><a src="#"><span class="far fa-comments"></span></a></li>
-            <li><a src="#"><span class="fab fa-slack-hash"></span></a></li>
-            <li><a src="#"><span class="fa fa-shopping-cart"></span></a></li>
-            <li><a src="#"><span class="fas fa-paint-brush"></span></a></li>
-        </ul>
-        </div>
-    </aside>
-    
-<!--  Body Information  -->
-    <section class="body-info">
-        <div class="upper-body">
-            <img class="personal-image img-circle" src="img/wael.JPG">
-            <h3 class="personal-name">Wael Zoaiter</h3>
-            <p class="personal-job">Web Developer</p>
-        </div>
-        <div class="lower-body">
-            <div class="info-1 col-lg-6">
-                <h4>Friends</h4>
-                <ul class="groups-list list-unstyled">
-                    <li id="person_1" class="active">
-                    Yasser<br>
-                    <span class="nofic">1</span>
-                    </li>
-                    <li id="person_2">
-                    Ramadan<br>
-                    <span class="nofic">1</span>
-                    </li>
-                    <li id="person_3">
-                    Mahmoud<br>
-                    <span class="nofic">1</span>
-                    </li>
-                </ul>
+    <link rel="stylesheet" href="css/join-style.css">
+</head>
+
+<body class="bg">
+    <div class="center-box">
+        <form action="/chat.html">
+           <h3>Join a Chat</h3>
+            <div class="form-field">
+                <label>Your name:</label>
+                <input type="text" name="name">
             </div>
-            
-            <div class="info-1 col-lg-6">
-                <h4>Groups</h4>
-                <ul class="groups-list list-unstyled">
-                    <li id="group_1">
-                    Web Camp<br>
-                    <span class="nofic">1</span>
-                    </li>
-                    <li id="group_2">
-                    YRWM<br>
-                    <span class="nofic">1</span>
-                    </li>
-                    <li id="group_3">
-                    Basketball<br>
-                    <span class="nofic">1</span>
-                    </li>
-                </ul>
+            <div class="form-field">
+                <label>Room name:</label>
+                <input type="text" name="room">
             </div>
-        </div>
-    </section>
-    
-<!--  Chat Section  -->
-    <section class="chat-body col-lg-12">
-            <ul class="msgs list-unstyled">
-            </ul>
-        
-        <form class="send-section">
-            <input type='text' placeholder='Youe message' autofocus>
-            <button class='btn' type='submit'>Send</button>
+            <div class="form-field">
+                <button type="submit">Join</button>
+            </div>
         </form>
-        <button class='send-location'>Send Location</button>
-    </section>
-    
-<!--  Mustach Templates  -->
-    <script id="message-template" type="text/template">
-        <li>
-            <div class="message-title">
-                <h4>{{from}}</h4>
-                <small>{{createdAt}}</small>
-            </div>
-            <div class="message-body">
-                <p class="message">{{text}}</p>
-            </div>
-        </li>
-    </script>
-    <script id="location-template" type="text/template">
-        <li>
-            <div class="message-title">
-                <h4>{{from}}</h4>
-                <small>{{createdAt}}</small>
-            </div>
-            <div class="message-body">
-                <a target="_blank" href="{{url}}" class="message">Location</a>
-            </div>
-        </li>
-    </script>
-    
-<!--  Scripts  -->
-    <script src="script/jquery-3.1.1.min.js"></script>
-    <script src="script/bootstrap.min.js"></script>
-    <script src="script/moment.min.js"></script>
-    <script src="script/mustache.js"></script>
-    <script src="script/script.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="script/socket.js"></script>
+    </div>
 </body>
 </html>
