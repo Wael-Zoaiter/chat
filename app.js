@@ -12,6 +12,7 @@ var date = require('moment')();
 var routes = require('./routes/index');
 var {generateMessage, generateLocationMessage} = require('./utils/message.js');
 var {isRealString} = require('./utils/validation.js');
+var {Users} = require('./utils/users');
 
 // view engine setup
 //app.set('public', path.join(__dirname, 'public'));
@@ -25,8 +26,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-
-
 
 
 /// catch 404 and forwarding to error handler
@@ -61,9 +60,9 @@ app.use(function(err, req, res, next) {
 });
 
 // Socket.io Section
+var users = new Users();
 
 io.on('connection',function(socket) {
-    
     var theDate = date.format('h:mm a');
     
     console.log('User Connected at ' + theDate);
@@ -72,31 +71,40 @@ io.on('connection',function(socket) {
         if (!isRealString(params.name) || !isRealString(params.room)) {
             callback('Name and Room is required.');
         }
-        
         socket.join(params.room);
-        //socket.leave('Basketball');
+        users.removeUser(socket.id);
+        users.addUser(socket.id,params.name,params.room);
+
+        io.to(params.room).emit('updateUserList',users.getUserList(params.room));
+
+
+        socket.emit('newMessage',generateMessage('Admin','Welcome'));
+        socket.broadcast.to(params.room).emit('newMessage',generateMessage('Admin', `${params.name} has connected.`));
         
-        // io.emit() -> io.to('Basketball').emit()
-        // socket.broadcast.emit() -> socket.broadcast.to(..).emit()
-        //socket.emit() -> socket.to('Room name').emit()
-        
-    socket.emit('newMessage',generateMessage('Admin','Welcome'));
-    socket.broadcast.to(params.room).emit('newMessage',generateMessage('Admin', `${params.name} has connected.`));
-        
-    socket.on('createMessage',function(sender, msg, callback) {
-        if (msg.trim() != ''){
-            console.log(sender + ': ' + msg);
-            io.to(params.room).emit('newMessage', generateMessage(sender,msg));
-            callback(sender);
-        }
-    });
+        socket.on('createMessage',function(sender, msg, callback) {
+            if (msg.trim() != ''){
+                console.log(sender + ': ' + msg);
+                io.to(params.room).emit('newMessage', generateMessage(sender,msg));
+                callback(sender);
+            }
+        });
     
-    socket.on('createLocationMessage', function(coords){
-        io.to(params.room).emit('newLocationMessage', generateLocationMessage('Admin', coords.latitude, coords.longitude));
-});
+        socket.on('createLocationMessage', function(coords){
+            io.to(params.room).emit('newLocationMessage', generateLocationMessage('Admin', coords.latitude, coords.longitude));
+        });
         
+        socket.on('disconnect', function() {
+            var user = users.removeUser(socket.id);
+            if(user) {
+                io.to(user.room).emit('updateUserList', users.getUserList(user.room));
+                io.to(user.room).emit('newMessage', generateMessage('Admin', `${user.name} has left.`));
+            }
+        });
+
         callback();
+
     });
+
 });
 
 // Listen to Server

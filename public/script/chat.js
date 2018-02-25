@@ -41,6 +41,20 @@ $(function(){
     });
     });
     
+    socket.on('disconnect', function(){
+        console.log('Disconnected from server');
+    });
+
+    socket.on('updateUserList', function(users){
+        console.log('Users list: ', users);
+        var ul = jQuery('<ul class="list-unstyled"></ul>');
+
+        users.forEach(function(user){
+            ul.append(jQuery('<li></li>').text(user));
+        });
+
+        jQuery('.groups-list').html(ul);
+    });
     
     socket.on('newMessage', function(data) {
         var formattedTime = moment(data.createdAt).format('h:mm a');
