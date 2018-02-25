@@ -11,6 +11,7 @@ var date = require('moment')();
 
 var routes = require('./routes/index');
 var {generateMessage, generateLocationMessage} = require('./utils/message.js');
+var {isRealString} = require('./utils/validation.js');
 
 // view engine setup
 //app.set('public', path.join(__dirname, 'public'));
@@ -60,23 +61,47 @@ app.use(function(err, req, res, next) {
 });
 
 // Socket.io Section
+
 io.on('connection',function(socket) {
+    
     var theDate = date.format('h:mm a');
+    
     console.log('User Connected at ' + theDate);
+    
+    socket.on('join', function(params,callback) {
+        if (!isRealString(params.name) || !isRealString(params.room)) {
+            callback('Name and Room is required.');
+        }
+        
+        socket.join(params.room);
+        //socket.leave('Basketball');
+        
+        // io.emit() -> io.to('Basketball').emit()
+        // socket.broadcast.emit() -> socket.broadcast.to(..).emit()
+        //socket.emit() -> socket.to('Room name').emit()
+        
+    socket.emit('newMessage',generateMessage('Admin','Welcome'));
+    socket.broadcast.to(params.room).emit('newMessage',generateMessage('Admin', `${params.name} has connected.`));
+        
     socket.on('createMessage',function(sender, msg, callback) {
-        if (msg != ''){
+        if (msg.trim() != ''){
             console.log(sender + ': ' + msg);
-            io.emit('newMessage', generateMessage(sender,msg));
+            io.to(params.room).emit('newMessage', generateMessage(sender,msg));
             callback(sender);
         }
     });
+    
     socket.on('createLocationMessage', function(coords){
-    io.emit('newLocationMessage', generateLocationMessage('Admin', coords.latitude, coords.longitude));
+        io.to(params.room).emit('newLocationMessage', generateLocationMessage('Admin', coords.latitude, coords.longitude));
 });
+        
+        callback();
+    });
 });
 
 // Listen to Server
 var port = process.env.PORT || 3000;
+
 http.listen(port,function() {
 	console.log('listening on port '+port);
 });

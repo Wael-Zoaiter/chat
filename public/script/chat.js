@@ -2,7 +2,7 @@ $(function(){
     var socket = io();
     var sendSec = $('.send-section input');
 //    var groupy = $('.active').prop('id');
-    var user = prompt('Enter Your name:');
+//    var user = prompt('Enter Your name:');
     
     function scrollToBottom() {
         var messages = $('.msgs');
@@ -19,14 +19,29 @@ $(function(){
         }
     }
     
-    $('form').on('submit', function(e){
+    socket.on('connect', function(){
+        var params = jQuery.deparam(window.location.search);
+
+        socket.emit('join', params, function(err){
+            if (err) {
+                alert(err);
+                window.location.href = '/';
+            } else {
+                console.log('No Error');
+            }
+        });
+        
+        $('form').on('submit', function(e){
         e.preventDefault();
-        socket.emit('createMessage',user, sendSec.val(), function(data){
+        socket.emit('createMessage',params.name, sendSec.val(), function(data){
             console.log(`The message from you ${data} successfully received.`);
         });
         sendSec.val('');
         return false;
     });
+    });
+    
+    
     socket.on('newMessage', function(data) {
         var formattedTime = moment(data.createdAt).format('h:mm a');
         var template = $('#message-template').html();
@@ -38,6 +53,7 @@ $(function(){
         $('.msgs').append(html);
         scrollToBottom();
     });
+    
     socket.on('newLocationMessage',function(data){
         var formattedTime = moment(data.createdAt).format('h:mm a');
         var template = $('#location-template').html();
@@ -51,11 +67,11 @@ $(function(){
     });
     
     var locationButton = $('.send-location');
+    
     locationButton.on('click', function(){
         if(!navigator.geolocation) {
             return alert('Geolocation not supported by yout browser.');
         }
-        
         locationButton.attr('disabled','disabled').text('...');
         navigator.geolocation.getCurrentPosition(function (position){
             locationButton.removeAttr('disabled').text('Send Location');
@@ -66,6 +82,8 @@ $(function(){
                 
                 alert('Unable to fetch location.');
             });
-        })
+        });
     });
+    
+//    --
 });
