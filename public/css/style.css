@@ -39,14 +39,14 @@ body
 
 .aside-bar 
 {
-    width: 7%;
+/*    width: 7%;*/
     height: 100vh;
     float: left;
     color: #7e75ad;
     font-size: 25px;
     padding: 0;
     text-align: center;
-    position: fixed;
+/*    position: fixed;*/
     overflow: hidden
 }
 .aside-bar .logo 
@@ -95,12 +95,13 @@ body
 {
     background-color: #1cc1fb;
     float: left;
-    margin-left: 7%;
-    width: 20%;
+/*    margin-left: 7%;*/
+/*    width: 20%;*/
+    padding: 0;
     text-align: center;
     /* overflow-y: scroll; */
     color: #bfeeff;
-    position: fixed
+/*    position: fixed*/
 }
 
 .body-info .upper-body 
@@ -125,6 +126,8 @@ body
 .upper-body p 
 {
     font-family: Raleway;
+    font-size: 14px;
+    font-weight: 300
 }
 
 .lower-body 
@@ -187,12 +190,51 @@ body
     border-top: none;
 }
 
+@media (max-width: 520px) 
+{
+    .personal-image 
+    {
+        width: 75px;
+        margin: 30px 0 0px;
+    }
+    .upper-body h3
+    {
+        font-size: 20px
+    }
+    .upper-body p
+    {
+        font-size: 12px
+    }
+}
+@media (max-width: 400px) 
+{
+    .personal-image 
+    {
+        width: 60px;
+        margin: 30px 0 0px;
+    }
+    .upper-body h3
+    {
+        font-size: 15px
+    }
+    .upper-body p
+    {
+        font-size: 10px
+    }
+    .info-1 h4
+    {
+        font-size: 15px
+    }
+}
+
 /* Chat Body */
 
 .chat-body 
 {
-    margin-left: 27%;
-    width: 73%;
+/*    margin-left: 27%;*/
+/*    width: 73%;*/
+    margin: 0;
+    padding: 0;
     float: right;
     overflow: hidden;
     height: 100vh;
@@ -208,13 +250,6 @@ body
     top: 0;right: 0;
     overflow-y: scroll;
     padding: 10px
-}
-
-.message 
-{
-    font-family: monospace;
-    font-size: 14px;
-    padding: 0
 }
 
 .send-section
@@ -258,6 +293,31 @@ body
     height: 10%;
     position: absolute;
     bottom: 0;right: 0;
+}
+
+@media (max-width: 520px) 
+{
+    .send-location,
+    .send-section button
+    {
+        font-size: 10px;
+    }
+    .send-section input 
+    {
+        font-size: 10px
+    }
+}
+@media (max-width: 400px) 
+{
+    .send-location,
+    .send-section button
+    {
+        font-size: 10px;
+    }
+    .send-section input 
+    {
+        font-size: 10px
+    }
 }
 
 /* Mustache Template */
