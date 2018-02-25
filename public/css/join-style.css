@@ -73,3 +73,41 @@
 {
     background: linear-gradient(#1cc1fb,#16a2d3);
 }
+
+@media (max-width: 350px)
+{
+    .center-box
+    {
+        width: 50%;
+        padding: 10px;
+    }
+
+    .center-box h3 
+    {
+        font-size: 15px
+    }
+    
+    .form-field
+    {
+        margin: 5px 0;
+    }
+    
+    .form-field label
+    {
+        font-size: 12px
+    }
+
+    .form-field input
+    {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .form-field button
+    {
+        padding: 10px 30px;
+        font-size: 14px;
+        margin-top: 5px
+    }
+
+}

@@ -84,11 +84,11 @@ $(function(){
     
     locationButton.on('click', function(){
         if(!navigator.geolocation) {
-            return alert('Geolocation not supported by yout browser.');
+            return alert('Geolocation not supported by your browser.');
         }
         locationButton.attr('disabled','disabled').text('...');
         navigator.geolocation.getCurrentPosition(function (position){
-            locationButton.removeAttr('disabled').text('Send Location');
+            locationButton.removeAttr('disabled').html('<i class="fa fa-location-arrow"></i>');
             socket.emit('createLocationMessage', {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
